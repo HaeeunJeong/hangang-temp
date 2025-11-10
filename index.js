@@ -1,6 +1,36 @@
 #!/usr/bin/env node
 // ES Module + Node 18+ 내장 fetch
-import "dotenv/config";
+
+//import fs from "node:fs";
+//import dotenv from "dotenv";
+//import "dotenv/config"; // 기본: 현재 디렉터리 .env
+//
+//// 고정 경로 .env (예: /etc/hangang/.env)
+//const systemEnv = "/etc/hangang/.env";
+//if (fs.existsSync(systemEnv)) {
+//  dotenv.config({ path: systemEnv });
+//}
+
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import dotenv from "dotenv";
+
+// 조용히 로드 (dotenv 출력 억제)
+dotenv.config({ quiet: true });
+
+// 추가로 /etc/hangang/.env 등 고정 경로 로드
+const candidates = [
+  path.resolve(process.cwd(), ".env"),
+  path.join(os.homedir(), ".config", "hangang", ".env"),
+  "/etc/hangang/.env",
+];
+
+for (const p of candidates) {
+  if (fs.existsSync(p)) {
+    dotenv.config({ path: p, override: true, quiet: true });
+  }
+}
 
 function fmtDate(yMd, hr) {
   const y = String(yMd).slice(0, 4);

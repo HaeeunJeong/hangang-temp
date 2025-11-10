@@ -11,44 +11,10 @@
 
 ## 설치
 
-### 1) 저장소 클론
 ```bash
-git clone <YOUR_REPO_URL> hangang-temp
-cd hangang-temp
-```
+git clone https://github.com/HaeeunJeong/hangang-temp.git ~/.local/hangang-temp
+cd ~/.local/hangang-temp
 
-
-### 2) 의존성 설치
-```bash
-npm install
-```
-
-### 3) 환경 변수 설정
-
-프로젝트 루트에 .env 파일을 생성합니다.
-```bash
-echo "SEOUL_API=발급받은_서울시_API_키" > .env
-```
-
-
-### 4) 실행
-```bash
-node index.js           
-```
-
-### 전역 명령어로 사용
-
-```bash
-chmod +x index.js
-sudo npm link
-hangang-temp
-```
-
-전역 명령 이름은 package.json의 bin에 설정된 "hangang": "./index.js"를 따릅니다.
-
-### 출력 예시
-```bash
-측정소: 선유
-수온: 14.6 °C
-시간: 2025-11-10 14:00
+chmod +x ./install.sh
+./install.sh
 ```
