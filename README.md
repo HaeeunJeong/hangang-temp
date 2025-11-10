@@ -38,19 +38,9 @@ node index.js
 
 ### 전역 명령어로 사용
 
-개발 중 전역 링크:
-
 ```bash
 chmod +x index.js
 sudo npm link
-hangang-temp
-```
-
-
-패키지로 설치(배포 후):
-
-```bash
-npm install -g hangang-temp
 hangang-temp
 ```
 
